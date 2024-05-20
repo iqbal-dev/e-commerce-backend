@@ -1,5 +1,6 @@
 import cors from 'cors'
 import express, { Application, Request, Response } from 'express'
+import { errorHandlerMiddleware } from './app/middleware/errorHandlerMiddleware'
 
 const app: Application = express()
 
@@ -7,9 +8,11 @@ const app: Application = express()
 app.use(express.json())
 app.use(cors())
 
-// Route for the root endpoint
-app.get('/', (req: Request, res: Response) => {
+// Health check endpoint
+app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({
+    statusCode: 200,
+    success: true,
     message: 'Hello server',
   })
 })
@@ -23,5 +26,6 @@ app.use('*', (req: Request, res: Response) => {
 })
 
 // Global error handler middleware
+app.use(errorHandlerMiddleware)
 
 export default app
