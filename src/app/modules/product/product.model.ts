@@ -88,6 +88,8 @@ const productSchema = new Schema<TProduct>({
   },
 })
 
+// Indexing for better performance on searches
+productSchema.index({ name: 'text', description: 'text', tags: 'text' })
 // Product model
 const Product = model<TProduct>('Product', productSchema)
 
