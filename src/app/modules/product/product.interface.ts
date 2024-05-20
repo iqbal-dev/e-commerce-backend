@@ -8,10 +8,13 @@ export type TInventory = {
   inStock: boolean
 }
 export type TProduct = {
+  sku: string
   name: string
   description: string
   price: number
   tags: string[]
   variants: TVariant[]
   inventory: TInventory
+  category: string
+  weight: number
 }
