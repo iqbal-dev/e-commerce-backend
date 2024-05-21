@@ -30,7 +30,7 @@ const productSchema = z.object({
 
 // Example usage of the Zod schemas
 const validateProduct = (product: TProduct) => {
-  return productSchema.safeParse(product)
+  return productSchema.parse(product)
 }
 
 export default validateProduct

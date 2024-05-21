@@ -1,4 +1,5 @@
 import express from 'express'
+import { ProductController } from './product.controller'
 
 const router = express.Router()
 
@@ -10,7 +11,7 @@ router
       message: 'Hello world',
     })
   })
-  .post((req, res) => {})
+  .post(ProductController.create)
   .put((req, res) => {})
   .patch((req, res) => {})
   .delete((req, res) => {})
