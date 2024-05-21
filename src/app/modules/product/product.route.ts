@@ -1,21 +1,14 @@
-import express from 'express'
-import { ProductController } from './product.controller'
+import express from 'express';
 
-const router = express.Router()
+const router = express.Router();
 
-router
-  .route('/')
-  .get((req, res) => {
-    res.json({
-      success: true,
-      message: 'Hello world',
-    })
-  })
-  .post(ProductController.create)
-  .put((req, res) => {})
-  .patch((req, res) => {})
-  .delete((req, res) => {})
+router.route('/').get((_req, res) => {
+  res.json({
+    success: true,
+    message: 'Hello world',
+  });
+});
 
-const productRoute = router
+const productRoute = router;
 
-export default productRoute
+export default productRoute;

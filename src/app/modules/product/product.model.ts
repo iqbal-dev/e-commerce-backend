@@ -1,5 +1,5 @@
-import { Schema, model } from 'mongoose'
-import { TInventory, TProduct, TVariant } from './product.interface'
+import { Schema, model } from 'mongoose';
+import { TInventory, TProduct, TVariant } from './product.interface';
 
 // Variant schema
 const variantSchema = new Schema<TVariant>({
@@ -13,7 +13,7 @@ const variantSchema = new Schema<TVariant>({
     required: [true, 'Variant value is required'],
     trim: true,
   },
-})
+});
 
 // Inventory schema
 const inventorySchema = new Schema<TInventory>({
@@ -27,7 +27,7 @@ const inventorySchema = new Schema<TInventory>({
     required: [true, 'Stock status is required'],
     default: true,
   },
-})
+});
 
 // Product schema
 const productSchema = new Schema<TProduct>({
@@ -57,7 +57,7 @@ const productSchema = new Schema<TProduct>({
     required: [true, 'At least one tag is required'],
     validate: {
       validator: function (v: string[]) {
-        return v.length > 0
+        return v.length > 0;
       },
       message: 'Product should have at least one tag',
     },
@@ -67,7 +67,7 @@ const productSchema = new Schema<TProduct>({
     required: [true, 'Product variants are required'],
     validate: {
       validator: function (v: TVariant[]) {
-        return v.length > 0
+        return v.length > 0;
       },
       message: 'Product should have at least one variant',
     },
@@ -86,11 +86,11 @@ const productSchema = new Schema<TProduct>({
     required: [true, 'Weight is required'],
     min: [0, 'Weight cannot be negative'],
   },
-})
+});
 
 // Indexing for better performance on searches
-productSchema.index({ name: 'text', description: 'text', tags: 'text' })
+productSchema.index({ name: 'text', description: 'text', tags: 'text' });
 // Product model
-const Product = model<TProduct>('Product', productSchema)
+const Product = model<TProduct>('Product', productSchema);
 
-export default Product
+export default Product;
