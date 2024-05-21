@@ -4,6 +4,7 @@
   "description": "This project involves developing a basic e-commerce platform with functionalities to create, update, and delete products, as well as manage inventory.",
   "main": "server.ts",
   "scripts": {
+    "start": "node ./dist/server.js",
     "start:prod": "node ./dist/server.js",
     "start:dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
