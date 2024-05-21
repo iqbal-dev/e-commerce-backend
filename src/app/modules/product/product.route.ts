@@ -4,7 +4,12 @@ const router = express.Router()
 
 router
   .route('/')
-  .get((req, res) => {})
+  .get((req, res) => {
+    res.json({
+      success: true,
+      message: 'Hello world',
+    })
+  })
   .post((req, res) => {})
   .put((req, res) => {})
   .patch((req, res) => {})

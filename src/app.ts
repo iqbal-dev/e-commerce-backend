@@ -1,6 +1,7 @@
 import cors from 'cors'
 import express, { Application, Request, Response } from 'express'
 import { errorHandlerMiddleware } from './app/middleware/errorHandlerMiddleware'
+import router from './app/routes'
 
 const app: Application = express()
 
@@ -16,6 +17,10 @@ app.get('/health', (req: Request, res: Response) => {
     message: 'Hello server',
   })
 })
+
+// Integration all endpoints
+
+app.use('/api', router)
 
 // Middleware for handling 404 Not Found errors
 app.use('*', (req: Request, res: Response) => {
