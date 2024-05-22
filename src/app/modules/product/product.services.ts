@@ -6,10 +6,18 @@ const createProduct = async (product: TProduct) => {
 
   return result;
 };
-const findAllProduct = async (searchTerm: string): Promise<TProduct[]> => {
-  const query: { [key: string]: any } = {};
 
-  if (!!searchTerm) {
+type TProductQuery = {
+  $or?: Array<{
+    name?: { $regex: string; $options: string };
+    description?: { $regex: string; $options: string };
+    category?: { $regex: string; $options: string };
+  }>;
+};
+const findAllProduct = async (searchTerm: string): Promise<TProduct[]> => {
+  const query: TProductQuery = {};
+
+  if (searchTerm) {
     query.$or = [
       { name: { $regex: searchTerm, $options: 'i' } },
       { description: { $regex: searchTerm, $options: 'i' } },

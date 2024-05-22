@@ -12,7 +12,7 @@ type AppError =
   | ZodError
   | mongoose.Error
   | MongoServerError
-  | Error
+  | Error;
 
 export const errorHandlerMiddleware = (
   err: AppError,
@@ -48,8 +48,6 @@ export const errorHandlerMiddleware = (
       errors: formattedError.errors,
     });
   }
-
-  console.error('Unexpected error:', err); // Log the error for debugging
 
   return res.status(500).json({
     success: false,

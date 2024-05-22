@@ -15,7 +15,6 @@ const inventorySchema = z.object({
 
 // Zod schema for Product
 const productSchema = z.object({
-  sku: z.string().trim(),
   name: z.string().trim(),
   description: z.string().trim(),
   price: z.number().min(0, 'Price cannot be negative'),
