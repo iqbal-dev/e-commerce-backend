@@ -29,7 +29,7 @@ const findAllProduct = async (searchTerm: string): Promise<TProduct[]> => {
   return result;
 };
 const findOnProductById = async (productId: string): Promise<TProduct> => {
-  const result = await Product.findById(productId).lean().select('-_id');
+  const result = await Product.findById(productId);
   if (!result) {
     throw new NotFoundError(`Product with ID ${productId} not found`);
   }

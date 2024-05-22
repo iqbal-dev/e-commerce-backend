@@ -26,7 +26,6 @@ const variantSchema = new Schema<TVariant>(
     toObject: {
       transform: (doc, ret) => {
         delete ret.__v;
-
         delete ret._id;
         return ret;
       },
@@ -52,7 +51,6 @@ const inventorySchema = new Schema<TInventory>(
     toJSON: {
       transform: (doc, ret) => {
         delete ret.__v;
-
         delete ret._id;
         return ret;
       },
@@ -60,7 +58,6 @@ const inventorySchema = new Schema<TInventory>(
     toObject: {
       transform: (doc, ret) => {
         delete ret.__v;
-
         delete ret._id;
         return ret;
       },
@@ -131,7 +128,6 @@ const productSchema = new Schema<TProduct>(
     toJSON: {
       transform: (doc, ret) => {
         delete ret.__v;
-
         delete ret._id;
         return ret;
       },
@@ -139,7 +135,6 @@ const productSchema = new Schema<TProduct>(
     toObject: {
       transform: (doc, ret) => {
         delete ret.__v;
-
         delete ret._id;
         return ret;
       },
