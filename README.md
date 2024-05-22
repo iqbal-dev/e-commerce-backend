@@ -12,10 +12,6 @@ All endpoints are relative to `http://localhost:8000/api`.
 
 Standard HTTP status codes are used for error handling. Additionally, error responses will include a JSON object with a `message` field indicating the error message.
 
-# API Documentation
-
-This is a sample e-commerce API endpoint.
-
 ## Endpoints
 
 ### Products
