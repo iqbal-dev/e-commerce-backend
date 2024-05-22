@@ -7,7 +7,11 @@ router
   .route('/')
   .get(ProductController.products)
   .post(ProductController.create);
-router.route('/:productId').get(ProductController.product);
+router
+  .route('/:productId')
+  .get(ProductController.product)
+  .put(ProductController.update)
+  .delete(ProductController.remove);
 const productRoute = router;
 
 export default productRoute;

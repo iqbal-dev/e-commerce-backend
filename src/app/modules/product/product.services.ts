@@ -1,13 +1,6 @@
 import { NotFoundError } from '../../errors/NotFoundError';
 import { TProduct } from './product.interface';
 import Product from './product.model';
-
-const createProduct = async (product: TProduct) => {
-  const result = await Product.create(product);
-
-  return result;
-};
-
 type TProductQuery = {
   $or?: Array<{
     name?: { $regex: string; $options: string };
@@ -15,7 +8,34 @@ type TProductQuery = {
     category?: { $regex: string; $options: string };
   }>;
 };
-const findAllProduct = async (searchTerm: string): Promise<TProduct[]> => {
+const create = async (product: TProduct) => {
+  const result = await Product.create(product);
+
+  return result;
+};
+const update = async (product: Partial<TProduct>, productId: string) => {
+  const result = await Product.findByIdAndUpdate(
+    productId,
+    { $set: product },
+    { new: true, runValidators: true },
+  );
+
+  if (!result) {
+    throw new NotFoundError(`Product with ID ${productId} not found`);
+  }
+
+  return result;
+};
+const remove = async (productId: string) => {
+  const result = await Product.findByIdAndDelete(productId);
+
+  if (!result) {
+    throw new NotFoundError(`Product with ID ${productId} not found`);
+  }
+
+  return result;
+};
+const products = async (searchTerm: string): Promise<TProduct[]> => {
   const query: TProductQuery = {};
 
   if (searchTerm) {
@@ -28,7 +48,7 @@ const findAllProduct = async (searchTerm: string): Promise<TProduct[]> => {
   const result = await Product.find(query);
   return result;
 };
-const findOnProductById = async (productId: string): Promise<TProduct> => {
+const product = async (productId: string): Promise<TProduct> => {
   const result = await Product.findById(productId);
   if (!result) {
     throw new NotFoundError(`Product with ID ${productId} not found`);
@@ -37,7 +57,9 @@ const findOnProductById = async (productId: string): Promise<TProduct> => {
 };
 
 export const ProductServices = {
-  createProduct,
-  findAllProduct,
-  findOnProductById,
+  create,
+  update,
+  products,
+  product,
+  remove,
 };
