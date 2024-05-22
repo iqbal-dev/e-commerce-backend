@@ -20,10 +20,8 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 };
 const products = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { product } = req.body;
-    const validateData = validateProduct(product);
-
-    const productData = await ProductServices.createProduct(validateData);
+    const searchTerm = req.query.searchTerm as string | '';
+    const productData = await ProductServices.findAllProduct(searchTerm)
     res.status(201).json({
       success: true,
       statusCode: 201,
