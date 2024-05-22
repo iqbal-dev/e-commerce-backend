@@ -11,15 +11,16 @@ const findAllProduct = async (searchTerm: string): Promise<TProduct[]> => {
 
   if (!!searchTerm) {
     query.$or = [
-      { name: { $regex: searchTerm, $options: 'i' } }, 
-      { description: { $regex: searchTerm, $options: 'i' } } 
+      { name: { $regex: searchTerm, $options: 'i' } },
+      { description: { $regex: searchTerm, $options: 'i' } },
+      { category: { $regex: searchTerm, $options: 'i' } },
     ];
   }
   const result = await Product.find(query);
-  return result
+  return result;
 };
 
 export const ProductServices = {
   createProduct,
-  findAllProduct
+  findAllProduct,
 };

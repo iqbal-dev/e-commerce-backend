@@ -13,7 +13,7 @@ const variantSchema = new Schema<TVariant>({
     required: [true, 'Variant value is required'],
     trim: true,
   },
-}, { _id: false });
+});
 
 // Inventory schema
 const inventorySchema = new Schema<TInventory>({
@@ -27,7 +27,7 @@ const inventorySchema = new Schema<TInventory>({
     required: [true, 'Stock status is required'],
     default: true,
   },
-}, { _id: false });
+});
 
 // Product schema
 const productSchema = new Schema<TProduct>({
@@ -86,7 +86,7 @@ const productSchema = new Schema<TProduct>({
     required: [true, 'Weight is required'],
     min: [0, 'Weight cannot be negative'],
   },
-}, { _id: false });
+});
 
 // Indexing for better performance on searches
 productSchema.index({ name: 'text', description: 'text', tags: 'text' });

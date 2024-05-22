@@ -5,12 +5,7 @@ const router = express.Router();
 
 router
   .route('/')
-  .get((_req, res) => {
-    res.json({
-      success: true,
-      message: 'Hello world',
-    });
-  })
+  .get(ProductController.products)
   .post(ProductController.create);
 
 const productRoute = router;
