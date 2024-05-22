@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { MongoServerError } from 'mongodb';
 import mongoose from 'mongoose';
 import { ZodError } from 'zod';
+import { NotFoundError } from '../errors/NotFoundError';
 import { ValidationError } from '../errors/ValidationError';
 import { formatMongoErrors } from '../utils/formatMongoErrors';
 import { formatZodErrors } from '../utils/formatZodErrors';
@@ -21,9 +22,9 @@ export const errorHandlerMiddleware = (
   _next: NextFunction, // eslint-disable-line @typescript-eslint/no-unused-vars
 ) => {
   if (err instanceof ValidationError) {
-    return res.status(400).json({
+    return res.status(err.statusCode).json({
       success: false,
-      statusCode: 400,
+      statusCode: err.statusCode,
       message: err.message,
       errors: err.errors,
     });
@@ -31,11 +32,18 @@ export const errorHandlerMiddleware = (
 
   if (err instanceof ZodError) {
     const formattedErrors = formatZodErrors(err);
-    return res.status(400).json({
+    return res.status(formattedErrors.statusCode).json({
       success: false,
-      statusCode: 400,
+      statusCode: formattedErrors.statusCode,
       message: 'Validation Error',
-      errors: formattedErrors,
+      errors: formattedErrors.errors,
+    });
+  }
+  if (err instanceof NotFoundError) {
+    return res.status(err.statusCode).json({
+      success: false,
+      statusCode: err.statusCode,
+      message: err.message,
     });
   }
 

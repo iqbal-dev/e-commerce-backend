@@ -1,3 +1,4 @@
+import { NotFoundError } from '../../errors/NotFoundError';
 import { TProduct } from './product.interface';
 import Product from './product.model';
 
@@ -27,8 +28,16 @@ const findAllProduct = async (searchTerm: string): Promise<TProduct[]> => {
   const result = await Product.find(query);
   return result;
 };
+const findOnProductById = async (productId: string): Promise<TProduct> => {
+  const result = await Product.findById(productId).lean().select('-_id');
+  if (!result) {
+    throw new NotFoundError(`Product with ID ${productId} not found`);
+  }
+  return result;
+};
 
 export const ProductServices = {
   createProduct,
   findAllProduct,
+  findOnProductById,
 };

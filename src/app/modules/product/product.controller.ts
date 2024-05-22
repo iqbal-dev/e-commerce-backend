@@ -36,8 +36,23 @@ const products = async (req: Request, res: Response, next: NextFunction) => {
     next(error);
   }
 };
+const product = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { productId } = req.params;
+    const productData = await ProductServices.findOnProductById(productId);
+    res.status(201).json({
+      success: true,
+      statusCode: 201,
+      message: 'Product created successfully',
+      data: productData,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const ProductController = {
   create,
   products,
+  product,
 };
