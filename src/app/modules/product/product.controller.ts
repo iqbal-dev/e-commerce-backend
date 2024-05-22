@@ -5,8 +5,8 @@ import validateProduct from './product.validation';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { product } = req.body;
-    const validateData = validateProduct.validateProduct(product);
+    const requestBody = req.body;
+    const validateData = validateProduct.validateProduct(requestBody);
     const sku = generateSKU(10);
     const productData = await ProductServices.create({
       sku,
@@ -53,9 +53,9 @@ const product = async (req: Request, res: Response, next: NextFunction) => {
 
 const update = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { product } = req.body;
+    const requestData = req.body;
     const productId: string = req.params.productId;
-    const validateData = validateProduct.validateUpdateProduct(product);
+    const validateData = validateProduct.validateUpdateProduct(requestData);
     const productData = await ProductServices.update(validateData, productId);
     res.status(202).json({
       success: true,

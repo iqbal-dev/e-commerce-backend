@@ -113,16 +113,6 @@ const productSchema = new Schema<TProduct>(
       type: inventorySchema,
       required: [true, 'Inventory details are required'],
     },
-    category: {
-      type: String,
-      required: [true, 'Category is required'],
-      trim: true,
-    },
-    weight: {
-      type: Number,
-      required: [true, 'Weight is required'],
-      min: [0, 'Weight cannot be negative'],
-    },
   },
   {
     toJSON: {

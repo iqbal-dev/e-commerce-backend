@@ -23,8 +23,6 @@ const productSchema = z.object({
     .array(variantSchema.required())
     .min(1, 'Product variants are required'),
   inventory: inventorySchema.required(),
-  category: z.string().trim(),
-  weight: z.number().min(0, 'Weight cannot be negative'),
 });
 
 // Zod schema for Variant

@@ -4,8 +4,8 @@ import { validateOrder } from './order.validation';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { order } = req.body;
-    const validateData = validateOrder(order);
+    const requestData = req.body;
+    const validateData = validateOrder(requestData);
     const orderData = await OrderServices.create(validateData);
     res.status(201).json({
       success: true,

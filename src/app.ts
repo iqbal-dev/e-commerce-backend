@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // Health check endpoint
-app.get('/health', (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
     statusCode: 200,
     success: true,

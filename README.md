@@ -34,29 +34,27 @@ Standard HTTP status codes are used for error handling. Additionally, error resp
 
 ```json
 {
-  "product": {
-    "sku": "PROD123457",
-    "name": "Example Product",
-    "description": "This is an example product description.",
-    "price": 99.99,
-    "tags": ["akjsdf"],
-    "variants": [
-      {
-        "type": "Color",
-        "value": "Red"
-      },
-      {
-        "type": "Size",
-        "value": "M"
-      }
-    ],
-    "inventory": {
-      "quantity": 100,
-      "inStock": true
+  "sku": "PROD123457",
+  "name": "Example Product",
+  "description": "This is an example product description.",
+  "price": 99.99,
+  "tags": ["akjsdf"],
+  "variants": [
+    {
+      "type": "Color",
+      "value": "Red"
     },
-    "category": "Electronics",
-    "weight": 1.5
-  }
+    {
+      "type": "Size",
+      "value": "M"
+    }
+  ],
+  "inventory": {
+    "quantity": 100,
+    "inStock": true
+  },
+  "category": "Electronics",
+  "weight": 1.5
 }
 ```
 
@@ -100,12 +98,10 @@ Standard HTTP status codes are used for error handling. Additionally, error resp
 - **Body:** (raw, JSON)
   ```json
   {
-    "order": {
-      "email": "iqbal@gmail.com",
-      "productId": "664dfa1fceaf369c0053167c",
-      "quantity": 90,
-      "price": 100
-    }
+    "email": "iqbal@gmail.com",
+    "productId": "664dfa1fceaf369c0053167c",
+    "quantity": 90,
+    "price": 100
   }
   ```
 
