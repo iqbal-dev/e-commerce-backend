@@ -19,7 +19,7 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 };
 const orders = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const searchTerm = req.query.searchTerm as string | '';
+    const searchTerm = req.query.email as string | '';
     const orderData = await OrderServices.orders(searchTerm);
     res.status(200).json({
       success: true,
