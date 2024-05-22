@@ -8,12 +8,15 @@ type TProductQuery = {
     category?: { $regex: string; $options: string };
   }>;
 };
-const create = async (product: TProduct) => {
+const create = async (product: TProduct): Promise<TProduct> => {
   const result = await Product.create(product);
 
   return result;
 };
-const update = async (product: Partial<TProduct>, productId: string) => {
+const update = async (
+  product: Partial<TProduct>,
+  productId: string,
+): Promise<TProduct> => {
   const result = await Product.findByIdAndUpdate(
     productId,
     { $set: product },

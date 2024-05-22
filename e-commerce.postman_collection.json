@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "3f63f082-75fe-41b0-b9fc-2dd5b86d08ef",
+		"name": "e-commerce",
+		"description": "This is sample e-commerce api endpoint",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18717941"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/products?searchTerm=app",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "searchTerm",
+									"value": "app"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product\":{\n  \"sku\": \"PROD123457\",\n  \"name\": \"Example Product\",\n  \"description\": \"This is an example product description.\",\n  \"price\": 99.99,\n  \"tags\": [\"akjsdf\"],\n  \"variants\": [\n    {\n      \"type\": \"Color\",\n      \"value\": \"Red\"\n    },\n    {\n      \"type\": \"Size\",\n      \"value\": \"M\"\n    }\n  ],\n  \"inventory\": {\n    \"quantity\": 100,\n    \"inStock\": true\n  },\n  \"category\": \"Electronics\",\n  \"weight\": 1.5\n}\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/products"
+					},
+					"response": []
+				},
+				{
+					"name": "product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/products/664cf98e47597a57012bde6a"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "http://localhost:8000/api/products/664cf98e47597a57012bde6a"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/api/products/664cf98e47597a57012bde6a"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order\":{\n        \"email\":\"iqbal@gmail.com\",\n        \"productId\":\"664dfa1fceaf369c0053167c\",\n        \"quantity\":90,\n        \"price\":100\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/orders/664e20612beaef86aa8c2cc7"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

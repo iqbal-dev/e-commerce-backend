@@ -75,6 +75,7 @@ const remove = async (req: Request, res: Response, next: NextFunction) => {
       success: true,
       statusCode: 200,
       message: 'Product deleted successfully',
+      data: null,
     });
   } catch (error) {
     next(error);

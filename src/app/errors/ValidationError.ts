@@ -1,9 +1,13 @@
 export class ValidationError extends Error {
-  errors: Record<string, string>;
+  errors?: Record<string, string>;
   statusCode: number;
 
-  constructor(errors: Record<string, string>, statusCode: number = 400) {
-    super('Validation Error');
+  constructor(
+    errors: Record<string, string>,
+    statusCode: number = 400,
+    message: string = 'Validation Error',
+  ) {
+    super(message);
     this.errors = errors;
     this.statusCode = statusCode;
 
